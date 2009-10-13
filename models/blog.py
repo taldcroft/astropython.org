@@ -53,6 +53,8 @@ class Article(search.SearchableModel):
     title = db.StringProperty(required=True)
     article_type = db.StringProperty(required=True, 
                                      choices=set(["article", "blog entry"]))
+    category = db.StringProperty(default="article",
+                                 choices=set(["snippet", "tutorial", "article"]))
     # Body can be in any format supported by Bloog (e.g. textile)
     body = db.TextProperty(required=True)
     # If available, we use 'excerpt' to summarize instead of 

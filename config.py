@@ -1,5 +1,8 @@
 import os
 import logging
+import StringIO
+
+LOG_STREAM = StringIO.StringIO()
 
 APP_ROOT_DIR = os.path.abspath(os.path.dirname(__file__))
 
@@ -15,12 +18,12 @@ BLOG = {
     "bloog_version": "0.8",
     "html_type": "text/html",
     "charset": "utf-8",
-    "title": "Bloog",
+    "title": "Astropython",
     "author": "Bill Katz",
     # This must be the email address of a registered administrator for the 
     # application due to mail api restrictions.
     "email": "you@foo.com",
-    "description": "A RESTful Blog/Homepage for Google AppEngine.",
+    "description": "A python resource for astronomers.",
     "root_url": "http://bloog.billkatz.com",
     "master_atom_url": "/feeds/atom.xml",
     # By default, visitors can comment on article for this many days.

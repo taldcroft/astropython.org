@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <meta http-equiv="Content-Type" content="{{ blog.html_type }}; charset={{ blog.charset }}" />
+        <meta http-equiv="Content-Type" content="{{ blog.html_type }}; charset=utf-8" />
         <title> {{ title }}</title>
         <meta name="generator" content="Bloog {{ bloog_version }}" />
         <link rel="stylesheet" href="/static/default/style.css" type="text/css" media="screen" />
@@ -45,6 +45,14 @@
                     </a>
                 </li>
                 {% endfor %}
+                {% if debug %}
+                <li>
+                    <a href="/log" title="View logging output">Log
+                        <br/>
+                        <span>Debug log output</span>
+                    </a>
+                </li>
+                {% endif %}
                 <li>
                     <a href="{{ blog.master_atom_url }}" title="Subscribe to the main Atom feed">Atom
                         <br/>
@@ -268,8 +276,9 @@
         {% if user_is_admin %}
         {% include "form_editor.html" %}
         {% endif %}
-
+        
         {% block end_body %}
         {% endblock %}
+
     </body>
 </html>

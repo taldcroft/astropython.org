@@ -175,12 +175,14 @@ class ViewPage(object):
         template_params = {
             "current_url": url,
             "bloog_version": config.BLOG['bloog_version'],
+            "bloog_log": config.LOG_STREAM.getvalue(),
             "user": users.get_current_user(),
             "user_is_admin": users.is_current_user_admin(),
             "login_url": users.create_login_url(handler.request.uri),
             "logout_url": users.create_logout_url(handler.request.uri),
             "blog": config.BLOG,
-            "blog_tags": tags
+            "blog_tags": tags,
+            "debug": config.DEBUG,
         }
         template_params.update(config.PAGE)
         template_params.update(more_params)

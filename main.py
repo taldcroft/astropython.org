@@ -64,8 +64,19 @@ ROUTES = [
     (config.BLOG['master_atom_url'] + '/*$', blog.AtomHandler),
     ('/articles', blog.ArticlesHandler),
     ('/sitemap.xml', blog.SitemapHandler),
-    ('/(.*)', blog.ArticleHandler)]
+    ('/log', blog.LogHandler),
+    ('/(article/.*)', blog.ArticleHandler),
+    ('/(.*)', blog.ArticleHandler),
+]
 
+
+if config.DEBUG:
+    hdlr = logging.StreamHandler(config.LOG_STREAM)
+    logging.getLogger().setLevel(logging.DEBUG)
+    logging.getLogger().addHandler(hdlr)
+
+logging.debug('hi there from logging!')
+    
 def main():
     path = timings.start_run()
     application = webapp.WSGIApplication(ROUTES, debug=config.DEBUG)
