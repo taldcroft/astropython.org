@@ -86,7 +86,7 @@ def get_view_file(handler, params={}):
     Only <handler> and <ext> are required.
     Properties 'module_name' and 'handler_name' can be passed in 
      params to override the current module/handler name.
-     
+
     Returns:
       Tuple with first element = template file name and
       second element = template directory path tuple
@@ -120,17 +120,17 @@ def get_view_file(handler, params={}):
     # in directories above us (due to sharing with other templates).
     themes = config.BLOG['theme']
     if isinstance(themes, basestring):
-      themes = [themes]
+        themes = [themes]
     template_dirs = []
     views_dir = os.path.join(config.APP_ROOT_DIR, 'views')
     for theme in themes:
-      root_folder = os.path.join(views_dir, theme)
-      if module_name:
-          template_dirs += (os.path.join(root_folder, app_name, module_name),)
-      if app_name:
-          template_dirs += (os.path.join(root_folder, app_name),)
-      template_dirs += (root_folder,)
-        
+        root_folder = os.path.join(views_dir, theme)
+        if module_name:
+            template_dirs += (os.path.join(root_folder, app_name, module_name),)
+        if app_name:
+            template_dirs += (os.path.join(root_folder, app_name),)
+        template_dirs += (root_folder,)
+
     # Now check possible extensions for the given template file.
     if module_name and handler_name:
         entries = templates.get(app_name, {}).get(module_name, {})

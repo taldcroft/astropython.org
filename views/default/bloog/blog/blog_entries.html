@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block first_column %}
+<div id="mainCol" class="fix"><a name="main"></a>
+    <div class="post">
+        <h2>List of Articles</h2>
+        {% for blog_entry in blog_entries %}
+        <div class="entry"><p>
+            <a href="{{ blog_entry.permalink }}" alt="{{ blog_entry.title }}">{{ blog_entry.title }}</a>
+        </p></div>
+        {% endfor %}
+    </div>
+{% if not blog_entries %}
+    {% include 'bloog_intro.html' %}
+{% endif %}
+{% include 'pager.html' %}
+</div>
+{% endblock %}

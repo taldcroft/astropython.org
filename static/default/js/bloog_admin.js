@@ -60,6 +60,18 @@ YAHOO.bloog.initAdmin = function() {
                 YAHOO.bloog.postDialog.render();
                 YAHOO.bloog.postDialog.show();
                 break;
+            case 'newtutorial':
+                hdr.setContent('Submit Tutorial Entry');
+                var today = new Date();
+                var month = today.getMonth() + 1;
+                var year = today.getFullYear();
+                YAHOO.bloog.http.action = "/tutorial/" + year + "/" + month;
+                YAHOO.bloog.http.verb = 'POST';
+                YAHOO.bloog.http.category = 'tutorial';
+                YAHOO.bloog.editor.setEditorHTML('<p>Tutorial entry goes here</p>');
+                YAHOO.bloog.postDialog.render();
+                YAHOO.bloog.postDialog.show();
+                break;
             case 'editbtn':
                 hdr.setContent('Submit Edit');
                 YAHOO.bloog.http.action = '?_method=PUT';
@@ -301,6 +313,7 @@ YAHOO.bloog.initAdmin = function() {
     YAHOO.util.Event.on("newarticle", "click", showRTE);
     YAHOO.util.Event.on("newblog", "click", showRTE);
     YAHOO.util.Event.on("newsnippet", "click", showRTE);
+    YAHOO.util.Event.on("newtutorial", "click", showRTE);
     YAHOO.util.Event.on("editbtn", "click", showRTE);
     YAHOO.util.Event.on("deletebtn", "click", function (e) { YAHOO.bloog.deleteDialog.show(); });
 }

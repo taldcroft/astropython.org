@@ -519,6 +519,16 @@ class BlogEntryHandler(restful.Controller):
         view.invalidate_cache()
         restful.send_successful_response(self, "/")
 
+class BlogEntriesHandler(restful.Controller):
+    def get(self):
+        logging.debug("BlogEntriesHandler#get")
+        page = view.ViewPage()
+        page.render_query(
+            self, 'blog_entries',
+            db.Query(models.blog.Article). \
+            filter('article_type =', 'blog entry').order('title'),
+            num_limit=20)
+
 class TagHandler(restful.Controller):
     def get(self, encoded_tag):
         tag = unicode(urllib.unquote(encoded_tag), config.BLOG["charset"])
