@@ -41,9 +41,22 @@ YAHOO.bloog.initAdmin = function() {
                 var today = new Date();
                 var month = today.getMonth() + 1;
                 var year = today.getFullYear();
-                YAHOO.bloog.http.action = "/" + year + "/" + month;
+                YAHOO.bloog.http.action = "/blog/" + year + "/" + month;
                 YAHOO.bloog.http.verb = 'POST';
+                YAHOO.bloog.http.category = 'blog';
                 YAHOO.bloog.editor.setEditorHTML('<p>Blog entry goes here</p>');
+                YAHOO.bloog.postDialog.render();
+                YAHOO.bloog.postDialog.show();
+                break;
+            case 'newsnippet':
+                hdr.setContent('Submit Snippet Entry');
+                var today = new Date();
+                var month = today.getMonth() + 1;
+                var year = today.getFullYear();
+                YAHOO.bloog.http.action = "/snippet/" + year + "/" + month;
+                YAHOO.bloog.http.verb = 'POST';
+                YAHOO.bloog.http.category = 'snippet';
+                YAHOO.bloog.editor.setEditorHTML('<p>Snippet entry goes here</p>');
                 YAHOO.bloog.postDialog.render();
                 YAHOO.bloog.postDialog.show();
                 break;
@@ -79,7 +92,8 @@ YAHOO.bloog.initAdmin = function() {
         var tags = YAHOO.util.Dom.get('postTags').value;
         var postData = 'title=' + encodeURIComponent(title) + '&' +
                        'tags=' + encodeURIComponent(tags) + '&' +
-                       'body=' + encodeURIComponent(html);
+                       'body=' + encodeURIComponent(html) + '&' +
+                       'category=' + YAHOO.bloog.http.category;
         var cObj = YAHOO.util.Connect.asyncRequest(
             YAHOO.bloog.http.verb, 
             YAHOO.bloog.http.action, 
@@ -286,6 +300,7 @@ YAHOO.bloog.initAdmin = function() {
     
     YAHOO.util.Event.on("newarticle", "click", showRTE);
     YAHOO.util.Event.on("newblog", "click", showRTE);
+    YAHOO.util.Event.on("newsnippet", "click", showRTE);
     YAHOO.util.Event.on("editbtn", "click", showRTE);
     YAHOO.util.Event.on("deletebtn", "click", function (e) { YAHOO.bloog.deleteDialog.show(); });
 }

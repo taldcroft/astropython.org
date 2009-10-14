@@ -78,6 +78,9 @@ def get_sent_properties(request_func, propname_list):
                     return None
         if value:
             prop_hash[key] = value
+        logging.debug('get_sent_value: %s %s', key, value)
+        
+    pass
     return prop_hash
 
 def methods_via_query_allowed(handler_method):

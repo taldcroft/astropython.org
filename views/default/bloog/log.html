@@ -45,14 +45,6 @@
                     </a>
                 </li>
                 {% endfor %}
-                {% if debug %}
-                <li>
-                    <a href="/log" title="View logging output">Log
-                        <br/>
-                        <span>Debug log output</span>
-                    </a>
-                </li>
-                {% endif %}
                 <li>
                     <a href="{{ blog.master_atom_url }}" title="Subscribe to the main Atom feed">Atom
                         <br/>
@@ -81,13 +73,13 @@
                 <!-- First column: Main content -->
                 {% block first_column %}
                 <div id="mainCol" class="fix"><a name="main"></a>
-                {% for article in articles %}
-                    {% include 'article_excerpt.html' %}
-                {% endfor %}
-                {% if not articles %}
-                    {% include 'bloog_intro.html' %}
-                {% endif %}
-                {% include 'pager.html' %}
+                
+    <h2> DEBUG LOG </h2>
+        <pre>
+        {{ bloog_log }}
+        </pre>
+        {% endif %}
+                
                 </div>
                 {% endblock %}
 
@@ -130,7 +122,6 @@
                             <h3>Astropython contributer</h3>
                             <ul>
                                 <li><a id="newblog" href="#">New Blog Entry</a></li>
-                                <li><a id="newsnippet" href="#">New Code Snippet</a></li>
                                 <li><a id="newarticle" href="#">New Article</a>
                                     - unsyndicated<br />(e.g., about page)</li>
                             </ul>
@@ -280,6 +271,7 @@
         
         {% block end_body %}
         {% endblock %}
+        {% if bloog_log %}
 
     </body>
 </html>
