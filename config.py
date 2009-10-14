@@ -22,9 +22,9 @@ BLOG = {
     "author": "Bill Katz",
     # This must be the email address of a registered administrator for the 
     # application due to mail api restrictions.
-    "email": "you@foo.com",
+    "email": "taldcroft@gmail.com",
     "description": "A python resource for astronomers.",
-    "root_url": "http://bloog.billkatz.com",
+    "root_url": "http://astropython.org",
     "master_atom_url": "/feeds/atom.xml",
     # By default, visitors can comment on article for this many days.
     # This can be overridden by setting article.allow_comments
@@ -62,14 +62,14 @@ PAGE = {
     "title": BLOG["title"],
     "articles_per_page": 5,
     "navlinks": [
-        { "title": "Blogs", 
-          "description": "News", 
+        { "title": "Forum", 
+          "description": "Discussion", 
           "url": "/blogs"},
         { "title": "Snippets", 
           "description": "Bits of code ", 
-          "url": "/articles"},
+          "url": "/snippets"},
         { "title": "Tutorials", 
-          "description": "", 
+          "description": "and HowTo's", 
           "url": "/tutorials"},
         { "title": "Resources", 
           "description": "Useful links", 

@@ -520,13 +520,16 @@ class BlogEntryHandler(restful.Controller):
         restful.send_successful_response(self, "/")
 
 class BlogEntriesHandler(restful.Controller):
-    def get(self):
-        logging.debug("BlogEntriesHandler#get")
+    def get(self, category):
+        sort_attribute = self.request.get('sort', 'title')
+        logging.debug("BlogEntriesHandler#get sorted by %s", sort_attribute)
         page = view.ViewPage()
         page.render_query(
             self, 'blog_entries',
             db.Query(models.blog.Article). \
-            filter('article_type =', 'blog entry').order('title'),
+            filter('article_type =', 'blog entry'). \
+            filter('category =', category). \
+            order(sort_attribute), params = {'category': category},
             num_limit=20)
 
 class TagHandler(restful.Controller):

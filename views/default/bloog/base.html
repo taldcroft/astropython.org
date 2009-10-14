@@ -43,7 +43,7 @@
                 <li>
                     <a href="/log" title="View logging output">Log
                         <br/>
-                        <span>Debug log output</span>
+                        <span>Debug log</span>
                     </a>
                 </li>
                 {% endif %}
@@ -53,27 +53,33 @@
                         <span>Syndication</span>
                     </a>
                 </li>
+                <!--  Put something on the right edge of top bar
                 <li class="skip">
                     <a href="#main" title="Skip to content">Main
                         <br/>
                         <span>Skip to content</span>
                     </a>
                 </li>
+                -->
             </ul>
-            <div id="archives" class="fix" style="display: none;">
-                <ul class="fix">
-                    <li><a href="/2009">2009</a></li>
-                    <li><a href="/2008">2008</a></li>
-                    <li><a href="/2007">2007</a></li>
-                    <li><a href="/2006">2006</a></li>
-                    <li><a href="/2005">2005</a></li>
-                    <li><a href="/2004">2004</a></li>
-                </ul>
-            </div>
-
-            <div id="mid" class="fix">
+<div id="mid" class="fix">
                 <!-- First column: Main content -->
                 {% block first_column %}
+                <div class="post">
+                <div class="entry">
+                <br>
+                <h2> Welcome to AstroPython </h2>
+                <p>Research in astronomy includes the analysis of astronomical images, parsing and manipulation of large catalogs, 
+                statistical yet often visual inference, and the creation of data visualizations for publication and dissemination of results. </p>
+ 
+                <p>The purpose of this web site is to act as a knowledge base for performing this
+                research with the open source Python language. It should become a means for
+                collecting users' code snippets or scripts, lists of useful resources, and
+                general advice from their own experiences.</p>
+                </div>
+                </div>
+                
+                <h2>RECENT ACTIVITY</h2>
                 <div id="mainCol" class="fix"><a name="main"></a>
                 {% for article in articles %}
                     {% include 'article_excerpt.html' %}
@@ -123,9 +129,10 @@
                         <div class="middle_links">
                             <h3>Astropython contributer</h3>
                             <ul>
-                                <li><a id="newblog" href="#">New Blog Entry</a></li>
-                                <li><a id="newsnippet" href="#">New Code Snippet</a></li>
-                                <li><a id="newtutorial" href="#">New Tutorial</a></li>
+                                <li><a id="newblog" href="#">Post to Forum</a></li>
+                                <li><a id="newsnippet" href="#">Post a Code Snippet</a></li>
+                                <li><a id="newtutorial" href="#">Add a Tutorial</a></li>
+                                <li><a id="newresource" href="#">Add a Resource</a></li>
                             </ul>
                         </div>
                     {% endif %}

@@ -3,12 +3,19 @@
 {% block first_column %}
 <div id="mainCol" class="fix"><a name="main"></a>
     <div class="post">
-        <h2>List of Articles</h2>
-        {% for blog_entry in blog_entries %}
-        <div class="entry"><p>
-            <a href="{{ blog_entry.permalink }}" alt="{{ blog_entry.title }}">{{ blog_entry.title }}</a>
-        </p></div>
+        <h2>List of {{ category }} entries</h2>
+        <table>
+        <tr> <th> <a href="{{ category }}s?sort=title">Title</a> </th> 
+             <th> <a href="{{ category }}s?sort=updated">Date</a> </th> 
+             <th> <a href="{{ category }}s?sort=tags">Tags</a> </th> 
+        </tr>
+        {% for blog in blog_entries %}
+          <tr> <td> <a href="{{ blog.permalink }}" alt="{{ blog.title }}">{{ blog.title }}</a> </td>
+               <td> {{ blog.updated.year }}-{{ blog.updated.month }}-{{ blog.updated.day }} </td>
+               <td> {% for tag in blog.tags %} <a href="/tag/{{ tag }}">{{ tag }}</a> {% endfor %} </td>
+          </tr>
         {% endfor %}
+        </table>
     </div>
 {% if not blog_entries %}
     {% include 'bloog_intro.html' %}

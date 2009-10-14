@@ -56,7 +56,7 @@ ROUTES = [
     ('/([12]\d\d\d)/*$', blog.YearHandler),
     ('/(blog|snippet|tutorial)/([12]\d\d\d)/(\d|[01]\d)/*$', blog.MonthHandler),
     ('/(blog|snippet|tutorial)/([12]\d\d\d)/(\d|[01]\d)/([-\w]+)/*$', blog.BlogEntryHandler),
-    ('/(?:blog|snippet|tutorial)s', blog.BlogEntriesHandler),
+    ('/(blog|snippet|tutorial)s', blog.BlogEntriesHandler),
     ('/admin/cache_stats/*$', cache_stats.CacheStatsHandler),
     ('/admin/timings/*$', timings.TimingHandler),
     ('/search', blog.SearchHandler),
