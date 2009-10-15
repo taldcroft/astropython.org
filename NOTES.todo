@@ -1,0 +1,5 @@
+To Do:
+    
+- Make tags list and links sensitive to current category (i.e. if there is a category
+  param defined then list only tags for that category and make URI {{category}}/tag/{{tag}}
+  
