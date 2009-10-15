@@ -72,6 +72,18 @@ YAHOO.bloog.initAdmin = function() {
                 YAHOO.bloog.postDialog.render();
                 YAHOO.bloog.postDialog.show();
                 break;
+            case 'newresource':
+                hdr.setContent('Submit Resource Entry');
+                var today = new Date();
+                var month = today.getMonth() + 1;
+                var year = today.getFullYear();
+                YAHOO.bloog.http.action = "/resource/" + year + "/" + month;
+                YAHOO.bloog.http.verb = 'POST';
+                YAHOO.bloog.http.category = 'resource';
+                YAHOO.bloog.editor.setEditorHTML('Description: one line description<br />Homepage URL: http://project.org<br />Version: version here<br />');
+                YAHOO.bloog.postDialog.render();
+                YAHOO.bloog.postDialog.show();
+                break;
             case 'editbtn':
                 hdr.setContent('Submit Edit');
                 YAHOO.bloog.http.action = '?_method=PUT';
@@ -314,6 +326,7 @@ YAHOO.bloog.initAdmin = function() {
     YAHOO.util.Event.on("newblog", "click", showRTE);
     YAHOO.util.Event.on("newsnippet", "click", showRTE);
     YAHOO.util.Event.on("newtutorial", "click", showRTE);
+    YAHOO.util.Event.on("newresource", "click", showRTE);
     YAHOO.util.Event.on("editbtn", "click", showRTE);
     YAHOO.util.Event.on("deletebtn", "click", function (e) { YAHOO.bloog.deleteDialog.show(); });
 }

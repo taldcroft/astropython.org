@@ -49,14 +49,15 @@ webapp.template.register_template_library('utils.django_libs.description')
 logging.info('Loading %s, app version = %s',
              __name__, os.getenv('CURRENT_VERSION_ID'))
 
+categories = '/(blog|snippet|tutorial|resource)'
 ROUTES = [
     ('/*$', blog.RootHandler),
     ('/403.html', blog.UnauthorizedHandler),
     ('/404.html', blog.NotFoundHandler),
     ('/([12]\d\d\d)/*$', blog.YearHandler),
-    ('/(blog|snippet|tutorial)/([12]\d\d\d)/(\d|[01]\d)/*$', blog.MonthHandler),
-    ('/(blog|snippet|tutorial)/([12]\d\d\d)/(\d|[01]\d)/([-\w]+)/*$', blog.BlogEntryHandler),
-    ('/(blog|snippet|tutorial)s', blog.BlogEntriesHandler),
+    (categories + '/([12]\d\d\d)/(\d|[01]\d)/*$', blog.MonthHandler),
+    (categories + '/([12]\d\d\d)/(\d|[01]\d)/([-\w]+)/*$', blog.BlogEntryHandler),
+    (categories + 's', blog.BlogEntriesHandler),
     ('/admin/cache_stats/*$', cache_stats.CacheStatsHandler),
     ('/admin/timings/*$', timings.TimingHandler),
     ('/search', blog.SearchHandler),

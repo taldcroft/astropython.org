@@ -51,10 +51,10 @@ class Article(search.SearchableModel):
     # Useful for aliasing of old urls
     legacy_id = db.StringProperty()
     title = db.StringProperty(required=True)
-    article_type = db.StringProperty(required=True, 
-                                     choices=set(["article", "blog entry"]))
+    article_type = db.StringProperty(required=True, # 'article' is getting orphaned by design
+                                     choices=set(["article", "blog entry"]))  
     category = db.StringProperty(default="blog",
-                                 choices=set(["blog", "snippet", "tutorial", "article"]))
+                                 choices=set(["blog", "snippet", "tutorial", "resource"]))
     # Body can be in any format supported by Bloog (e.g. textile)
     body = db.TextProperty(required=True)
     # If available, we use 'excerpt' to summarize instead of 
@@ -79,6 +79,10 @@ class Article(search.SearchableModel):
     # A list of languages for code embedded in article.
     # This lets us choose the proper javascript for pretty viewing.
     embedded_code = db.StringListProperty()
+    # Attributes for resource category.
+    resource_description = db.StringProperty()
+    resource_version = db.StringProperty()
+    resource_URL = db.StringProperty()
 
     def get_comments(self):
         """Return comments lexicographically sorted on thread string"""

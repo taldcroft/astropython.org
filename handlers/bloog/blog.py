@@ -157,6 +157,14 @@ def get_sanitizer_func(handler, **kwargs):
     logging.debug("In sanitizer: %s", kwlist)
     return lambda html : sanitizer.sanitize_html(html, **kwlist)
 
+def update_resource_values(body, article):
+    for re_match, attr in (('Homepage URL:', 'resource_URL'),
+                           ('Description:', 'resource_description'),
+                           ('Version:', 'resource_version'),):
+        match = re.search(re_match + '([^<]*)', body, re.MULTILINE)
+        if match:
+            setattr(article, attr, match.group(1).strip())
+
 def do_sitemap_ping():
     form_fields = { "sitemap": "%s/sitemap.xml" % (config.BLOG['root_url'],) }
     urlfetch.fetch(url="http://www.google.com/webmasters/tools/ping",
@@ -202,6 +210,8 @@ def process_article_edit(handler, permalink):
         for added_tag in after_tags - before_tags:
             db.get(added_tag).counter.increment()
         process_embedded_code(article)
+        if article.category == 'resource':
+            update_resource_values(property_hash['body'], article)
         article.put()
         restful.send_successful_response(handler, '/' + article.permalink)
         view.invalidate_cache()
@@ -228,7 +238,10 @@ def process_article_submission(handler, article_type):
                                          for name in property_hash['tags']]
         property_hash['format'] = 'html'   # For now, convert all to HTML
         property_hash['article_type'] = article_type
+                                   
         article = models.blog.Article(**property_hash)
+        if property_hash['category'] == 'resource':
+            update_resource_values(property_hash['body'], article)
         article.set_associated_data(
             {'relevant_links': handler.request.get('relevant_links'),
              'amazon_items': handler.request.get('amazon_items')})
@@ -524,14 +537,31 @@ class BlogEntriesHandler(restful.Controller):
         sort_attribute = self.request.get('sort', 'title')
         logging.debug("BlogEntriesHandler#get sorted by %s", sort_attribute)
         page = view.ViewPage()
-        page.render_query(
-            self, 'blog_entries',
-            db.Query(models.blog.Article). \
-            filter('article_type =', 'blog entry'). \
-            filter('category =', category). \
-            order(sort_attribute), params = {'category': category},
-            num_limit=20)
-
+        params = {'sort': sort_attribute, 'category': category}
+        if sort_attribute != 'tag':
+            page.render_query(
+                self, 'blog_entries',
+                db.Query(models.blog.Article). \
+                filter('article_type =', 'blog entry'). \
+                filter('category =', category). \
+                order(sort_attribute), params=params,
+                num_limit=20)
+        else:
+            # Set up to make a page where articles are grouped by tag
+            all_blog_entries = db.Query(models.blog.Article). \
+                     filter('article_type =', 'blog entry'). \
+                     filter('category =', category). \
+                     order('title').fetch(1000)
+            from models.blog import Tag
+            tags = [x['name'] for x in Tag.list()]
+            tag_blog_entries = []
+            for tag in tags:
+                blog_entries = [x for x in all_blog_entries if tag in x.tags]
+                if blog_entries:
+                    tag_blog_entries.append({'tag': tag, 'blog_entries': blog_entries})
+            params.update({'tag_blog_entries': tag_blog_entries})
+            page.render(self, params)
+        
 class TagHandler(restful.Controller):
     def get(self, encoded_tag):
         tag = unicode(urllib.unquote(encoded_tag), config.BLOG["charset"])

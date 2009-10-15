@@ -79,21 +79,15 @@ PAGE = {
           "url": "/contact"},
     ],
     "featuredMyPages": {
-        "title": "Bloog Development",
-        "description": "Get involved",
+        "title": "Featured links",
+        "description": "Astropython resources",
         "entries": [
-            { "title": "Source Code", 
-              "url": "http://github.com/DocSavage/bloog", 
-              "description": "GitHub repository" },
-            { "title": "Tarball", 
-              "url": "http://github.com/DocSavage/bloog/tarball/master", 
-              "description": "Most recent snapshot" },
-            { "title": "Author's Bloog", 
-              "url": "http://www.billkatz.com", 
-              "description": "What's brewing" },
-            { "title": "Architecture Diagram", 
-              "url": "/static/images/architecture2.png", 
-              "description": "RESTful Bloog" }
+            { "title": "Python", 
+              "url": "http://python.org", 
+              "description": "Home page" },
+            { "title": "Scipy", 
+              "url": "http://www.scipy.org", 
+              "description": "Scientific tools for python" },
         ]
     },
     "featuredOthersPages": {

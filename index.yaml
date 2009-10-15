@@ -49,21 +49,21 @@ indexes:
 # automatically uploaded to the admin console when you next deploy
 # your application using appcfg.py.
 
-# Used once in query history.
+# Unused in query history -- copied from input.
 - kind: Article
   properties:
   - name: article_type
   - name: category
   - name: tags
 
-# Used 34 times in query history.
+# Used 19 times in query history.
 - kind: Article
   properties:
   - name: article_type
   - name: category
   - name: title
 
-# Used 2 times in query history.
+# Used once in query history.
 - kind: Article
   properties:
   - name: article_type

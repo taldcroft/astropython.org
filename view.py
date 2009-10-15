@@ -246,4 +246,3 @@ class ViewPage(object):
         render_params.update(params)
 
         self.render(handler, render_params)
-
