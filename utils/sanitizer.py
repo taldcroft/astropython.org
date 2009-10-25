@@ -96,23 +96,22 @@ def sanitize_html(html='<p>No comment</p>', encoding=None,
     allow_tags = [tag for tag in allow_tags if tag not in blacklist_tags]
     allow_attributes = [tag for tag in allow_attributes 
                         if tag not in blacklist_tags]
+    
     if trusted_source:
         allow_attributes += attributes_for_trusted_source
         allow_tags += tags_for_trusted_source
 
     if isinstance(html, unicode): # and not encoding:
         logging.debug("Sanitizing unicode input.")
-        soup = BeautifulSoup(html,  
-                            convertEntities=BeautifulSoup.XHTML_ENTITIES)
+        soup = BeautifulSoup(html)
     else:
         if not encoding:
             encoding = 'latin-1'
         logging.debug("Sanitizing string input, assuming %s", encoding)
-        soup = BeautifulSoup(html.decode(encoding, 'ignore'),
-                             convertEntities=BeautifulSoup.XHTML_ENTITIES)
-    for comment in soup.findAll(
+        soup = BeautifulSoup(html.decode(encoding, 'ignore'))
+        for comment in soup.findAll(
                     text = lambda text: isinstance(text, Comment)):
-        comment.extract()
+            comment.extract()
     for tag in soup.findAll(True):
         if tag.name not in allow_tags:
             tag.hidden = True
