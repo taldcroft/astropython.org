@@ -19,10 +19,10 @@ BLOG = {
     "html_type": "text/html",
     "charset": "utf-8",
     "title": "Astropython",
-    "author": "Bill Katz",
+    "author": "Astropython Contributor",
     # This must be the email address of a registered administrator for the 
     # application due to mail api restrictions.
-    "email": "taldcroft@gmail.com",
+    "email": "aldcroft@astropython.org",
     "description": "A python resource for astronomers.",
     "root_url": "http://astropython.org",
     "master_atom_url": "/feeds/atom.xml",
