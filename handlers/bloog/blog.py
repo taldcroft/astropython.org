@@ -535,10 +535,16 @@ class BlogEntriesHandler(restful.Controller):
             from models.blog import Tag
             tags = [x['name'] for x in Tag.list()]
             tag_blog_entries = []
+            other_blog_entries = [x for x in all_blog_entries if not x.tags]    # Glop all tags that have only one entry into one tag
             for tag in tags:
                 blog_entries = [x for x in all_blog_entries if tag in x.tags]
-                if blog_entries:
+                if len(blog_entries) == 1:
+                    other_blog_entries.extend(blog_entries)
+                elif len(blog_entries) > 1:
                     tag_blog_entries.append({'tag': tag, 'blog_entries': blog_entries})
+            if other_blog_entries:
+                other_blog_entries = sorted(other_blog_entries, key=lambda x: x.title)
+                tag_blog_entries.append({'tag': 'Zero or one tags', 'blog_entries': other_blog_entries})
             params.update({'tag_blog_entries': tag_blog_entries})
             page.render(self, params)
         
