@@ -24,7 +24,7 @@ BLOG = {
     # application due to mail api restrictions.
     "email": "aldcroft@astropython.org",
     "description": "A python resource for astronomers.",
-    "root_url": "http://astropython.org",
+    "root_url": "http://ast4py.astropython.org",
     "master_atom_url": "/feeds/atom.xml",
     # By default, visitors can comment on article for this many days.
     # This can be overridden by setting article.allow_comments
@@ -39,10 +39,10 @@ BLOG = {
     "theme": ["default"],
     
     # Display gravatars alongside user comments?
-    "use_gravatars": True,
+    "use_gravatars": False,
     
     # Do you want to be emailed when new comments are posted?
-    "send_comment_notification": True,
+    "send_comment_notification": False,
 
     # If you want to use legacy ID mapping for your former blog platform,
     # define it here and insert the necessary mapping code in the
@@ -63,7 +63,7 @@ PAGE = {
     "articles_per_page": 5,
     "navlinks": [
         { "title": "Forum", 
-          "description": "Discussion", 
+          "description": "News and views", 
           "url": "/blogs"},
         { "title": "Snippets", 
           "description": "Bits of code ", 
@@ -90,22 +90,22 @@ PAGE = {
               "description": "Scientific tools for python" },
         ]
     },
-    "featuredOthersPages": {
-        "title": "Google App Engine",
-        "description": "Developer Resources",
-        "entries": [
-            { "title": "Google App Engine", 
-              "url": "http://code.google.com/appengine/", 
-              "description": "The mothership" },
-            { "title": "App Engine Group", 
-              "url": "http://groups.google.com/group/google-appengine", 
-              "description": "Developer group" },
-            { "title": "App Engine Open Source", 
-              "url": "http://groups.google.com/group/google-appengine/web/google-app-engine-open-source-projects", 
-              "description": "Code!" },
-            { "title": "App Engine Console", 
-              "url": "http://appengine.google.com", 
-              "description": "Your apps" }
-        ]
-    },
+    #"featuredOthersPages": {
+        #"title": "Google App Engine",
+        #"description": "Developer Resources",
+        #"entries": [
+            #{ "title": "Google App Engine", 
+              #"url": "http://code.google.com/appengine/", 
+              #"description": "The mothership" },
+            #{ "title": "App Engine Group", 
+              #"url": "http://groups.google.com/group/google-appengine", 
+              #"description": "Developer group" },
+            #{ "title": "App Engine Open Source", 
+              #"url": "http://groups.google.com/group/google-appengine/web/google-app-engine-open-source-projects", 
+              #"description": "Code!" },
+            #{ "title": "App Engine Console", 
+              #"url": "http://appengine.google.com", 
+              #"description": "Your apps" }
+        #]
+    #},
 }

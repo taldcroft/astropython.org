@@ -320,16 +320,6 @@ def process_comment_submission(handler, article):
         handler.error(400)
         return
 
-    # Notify the author of a new comment (from matteocrippa.it)
-    if config.BLOG['send_comment_notification']:
-        recipient = "%s <%s>" % (config.BLOG['author'], config.BLOG['email'],)
-        body = ("A new comment has just been posted on %s/%s by %s."
-                % (config.BLOG['root_url'], article.permalink, comment.name))
-        mail.send_mail(sender=config.BLOG['email'],
-                       to=recipient,
-                       subject="New comment by %s" % (comment.name,),
-                       body=body)
-
     # Render just this comment and send it to client
     view_path = view.find_file(view.templates, "bloog/blog/comment.html")
     response = template.render(
@@ -404,16 +394,6 @@ class RootHandler(restful.Controller):
     def post(self):
         logging.debug("RootHandler#post")
         process_article_submission(handler=self, article_type='article')
-
-class LogHandler(restful.Controller):
-    def get(self):
-        logging.debug("LogHandler#get")
-        page = view.ViewPage()
-        page.render_query(
-            self, 'log',
-            db.Query(models.blog.Article). \
-            filter('article_type =', 'article').order('title'),
-            num_limit=20)
 
 class ArticlesHandler(restful.Controller):
     def get(self):

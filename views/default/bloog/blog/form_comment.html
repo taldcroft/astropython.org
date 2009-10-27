@@ -6,25 +6,25 @@ p span.displaynone { display:none; }
     <div class="bd">
         <form id="commentDialogForm" name="commentDialogForm" method="post" action="#">
             <p>
-                <label for="captcha">Verify you are human by entering the letters below: 
+                <label for="captcha">Verify you are human by entering the letters below (case sensitive): 
                     {{ captcha1 }}<span class="displaynone">null</span>{{ captcha2 }}
                 </label><br />
                 <input type="text" id="captcha" name="captcha" size="30" />
             </p>
             <p>
-                <label for="commentName">Name:</label><br />
+                <label for="commentName">Name (optional):</label><br />
                 <input type="text" id="commentName" name="commentName" size="50" />
             </p>
             <p>
-                <label for="commentEmail">E-mail:</label><br />
+                <label for="commentEmail">E-mail (optional):</label><br />
                 <input type="text" id="commentEmail" name="commentEmail" size="50" />
             </p>
             <p>
-                <label for="commentHomepage">Homepage:</label><br />
+                <label for="commentHomepage">Homepage (optional):</label><br />
                 <input type="text" id="commentHomepage" name="commentHomepage" size="50" />
             </p>
             <p>
-                <label for="commentTitle">Title:</label><br />
+                <label for="commentTitle">Title (optional):</label><br />
                 <input type="text" id="commentTitle" name="commentTitle" size="50" />
             </p>
             <textarea name="commentBody" id="commentBody" cols="50" rows="10">

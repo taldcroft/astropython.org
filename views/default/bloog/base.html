@@ -39,29 +39,27 @@
                     </a>
                 </li>
                 {% endfor %}
-                {% if debug %}
-                <li>
-                    <a href="/log" title="View logging output">Log
-                        <br/>
-                        <span>Debug log</span>
-                    </a>
-                </li>
-                {% endif %}
                 <li>
                     <a href="{{ blog.master_atom_url }}" title="Subscribe to the main Atom feed">Atom
                         <br/>
                         <span>Syndication</span>
                     </a>
                 </li>
-                <!--  Put something on the right edge of top bar
+                <!--  Put something on the right edge of top bar -->
                 <li class="skip">
-                    <a href="#main" title="Skip to content">Main
+                  {% if user %}
+                    <a href="{{ logout_url }}" title="Logout">Logout
                         <br/>
-                        <span>Skip to content</span>
+                        <span>goodbye</span>
                     </a>
+                  {% else %}
+                      <a href="{{ login_url }}" title="Login">Login
+                        <br/>
+                        <span>Google id</span>
+                    </a>
+                  {% endif %}
                 </li>
-                -->
-            </ul>
+              </ul>
 <div id="mid" class="fix">
                 <!-- First column: Main content -->
                 {% block first_column %}
@@ -164,20 +162,22 @@
                     {% endblock %}
 
                     {% block featuredPages2 %}
-                    <div class="middle_links">
-                        <h3>{{ featuredOthersPages.title }}</h3>
-                        <p>
-                            {{ featuredOthersPages.description }}
-                        </p>
-                        <ul>
-                            {% for entry in featuredOthersPages.entries %}
-                            <li>
-                                <a href="{{ entry.url }}">{{ entry.title }}</a>
-                                - {{ entry.description }}
-                            </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
+                      {% if featuredOthersPages %}
+                        <div class="middle_links">
+                            <h3>{{ featuredOthersPages.title }}</h3>
+                            <p>
+                                {{ featuredOthersPages.description }}
+                            </p>
+                            <ul>
+                                {% for entry in featuredOthersPages.entries %}
+                                <li>
+                                    <a href="{{ entry.url }}">{{ entry.title }}</a>
+                                    - {{ entry.description }}
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                       {% endif %}
                     {% endblock %}
 
                     {% block subscribe %}
@@ -210,21 +210,6 @@
                             <span>Frontpage</span>
                         </a>
                     </li>
-                    {% if user %}
-                    <li>
-                        <a href="{{ logout_url }}" title="Logout">Logout
-                            <br/>
-                            <span>goodbye</span>
-                        </a>
-                    </li>
-                    {% else %}
-                    <li>
-                        <a href="{{ login_url }}" title="Login">Login
-                            <br/>
-                            <span>Google id</span>
-                        </a>
-                    </li>
-                    {% endif %}
                     {% for link in navlinks %}
                     <li>
                         <a href="{{ link.url }}" title="{{ link.description }}">{{ link.title }}
@@ -239,14 +224,22 @@
                             <span>Syndication</span>
                         </a>
                     </li>
-                    <li class="top">
-                        <a href="#top" title="Return to the top">Top
+                    <!--  Put something on the right edge of top bar -->
+                    <li class="skip">
+                      {% if user %}
+                        <a href="{{ logout_url }}" title="Logout">Logout
                             <br/>
-                            <span>Return to top</span>
+                            <span>goodbye</span>
                         </a>
+                      {% else %}
+                          <a href="{{ login_url }}" title="Login">Login
+                            <br/>
+                            <span>Google id</span>
+                        </a>
+                      {% endif %}
                     </li>
-                </ul>
-                <div id="attribution">
+                 </ul>
+               <div id="attribution">
                     <div id="downloadlinks">
                         <p><a href="http://bloog.billkatz.com">Bloog</a> for 
                             <a href="http://code.google.com/appengine/">Google App Engine</a> is available at

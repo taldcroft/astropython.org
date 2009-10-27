@@ -66,3 +66,9 @@ indexes:
   - name: article_type
   - name: category
   - name: updated
+
+- kind: Comment
+  properties:
+  - name: article
+  - name: thread
+    direction: desc
