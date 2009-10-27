@@ -24,7 +24,7 @@ BLOG = {
     # application due to mail api restrictions.
     "email": "aldcroft@astropython.org",
     "description": "A python resource for astronomers.",
-    "root_url": "http://ast4py.astropython.org",
+    "root_url": "http://py4ast.astropython.org",
     "master_atom_url": "/feeds/atom.xml",
     # By default, visitors can comment on article for this many days.
     # This can be overridden by setting article.allow_comments

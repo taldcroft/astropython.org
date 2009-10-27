@@ -83,6 +83,7 @@ class Article(search.SearchableModel):
     resource_description = db.StringProperty()
     resource_version = db.StringProperty()
     resource_URL = db.StringProperty()
+    user = db.UserProperty(auto_current_user_add=True)
 
     def get_comments(self):
         """Return comments lexicographically sorted on thread string"""
