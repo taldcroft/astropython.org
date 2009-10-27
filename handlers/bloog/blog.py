@@ -543,8 +543,11 @@ class BlogEntriesHandler(restful.Controller):
                 elif len(blog_entries) > 1:
                     tag_blog_entries.append({'tag': tag, 'blog_entries': blog_entries})
             if other_blog_entries:
-                other_blog_entries = sorted(other_blog_entries, key=lambda x: x.title)
-                tag_blog_entries.append({'tag': 'Zero or one tags', 'blog_entries': other_blog_entries})
+                # Make a dict based on blog entry key to get just unique entries
+                other_blog_entries = dict((x.key(), x) for x in other_blog_entries)
+                # Now turn it back into a list sorted by the blog entry title
+                other_blog_entries = sorted(other_blog_entries.values(), key=lambda x: x.title)
+                tag_blog_entries.append({'tag': 'Other', 'blog_entries': other_blog_entries})
             params.update({'tag_blog_entries': tag_blog_entries})
             page.render(self, params)
         
