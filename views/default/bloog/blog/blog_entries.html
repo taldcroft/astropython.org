@@ -4,24 +4,25 @@
 <div id="mainCol" class="fix"><a name="main"></a>
     <div class="post">
         <h2>{{ category|capfirst }} entries</h2>
-        Sort by <a href="{{ category }}s?sort=title">Title</a>, <a href="{{ category }}s?sort=updated">Date</a>, or <a href="{{ category }}s?sort=tag">Tags</a> 
+        Sort by <a href="{{ category }}s?sort=title">Title</a> 
+        {% ifnotequal category "resource" %}<a href="{{ category }}s?sort=updated">, Date</a>, {% endifnotequal %}or <a href="{{ category }}s?sort=tag">Tags</a> 
         {% if blog_entries %}
             <table>
             <tr> <th> <a href="{{ category }}s?sort=title">Title</a> </th> 
                  {% ifequal category "resource" %}
                    <th> Description </th> 
-                   <th> Homepage </th> 
-                 {% endifequal %}
+                 {% else %}
                 <th> <a href="{{ category }}s?sort=updated">Date</a> </th> 
+                 {% endifequal %}
                 <th> <a href="{{ category }}s?sort=tag">Tags</a> </th> 
                  </tr>
             {% for blog in blog_entries %}
               <tr> <td> <a href="{{ blog.permalink }}" alt="{{ blog.title }}">{{ blog.title }}</a> </td>
                   {% ifequal category "resource" %}
                     <td> {{ blog.resource_description }}</td> 
-                    <td> <a href="{{ blog.resource_URL}}">{{ blog.resource_URL|slice:":18" }}...</a></td> 
-                  {% endifequal %}
+                  {% else %}
                    <td> {{ blog.updated.year }}-{{ blog.updated.month }}-{{ blog.updated.day }} </td>
+                  {% endifequal %}
                    <td> {% for tag in blog.tags %} <a href="/tag/{{ tag }}">{{ tag }}</a> {% endfor %} </td>
               </tr>
             {% endfor %}
@@ -34,9 +35,9 @@
                     <tr> <td> <a href="{{ blog.permalink }}" alt="{{ blog.title }}">{{ blog.title }}</a> </td>
                       {% ifequal category "resource" %}
                         <td> {{ blog.resource_description }}</td> 
-                        <td> <a href="{{ blog.resource_URL}}">{{ blog.resource_URL|slice:":18" }}...</a></td> 
-                      {% endifequal %}
+                      {% else %}
                      <td> {{ blog.updated.year }}-{{ blog.updated.month }}-{{ blog.updated.day }} </td>
+                      {% endifequal %}
                     </tr>
                   {% endfor %}
                 {% endfor %}

@@ -80,7 +80,7 @@ YAHOO.bloog.initAdmin = function() {
                 YAHOO.bloog.http.action = "/resource/" + year + "/" + month;
                 YAHOO.bloog.http.verb = 'POST';
                 YAHOO.bloog.http.category = 'resource';
-                YAHOO.bloog.editor.setEditorHTML('Description: one line description<br />Homepage URL: http://project.org<br />Version: version here<br />');
+                YAHOO.bloog.editor.setEditorHTML('Description: one line description<br />Homepage URL: <a href="http://project.org">http://project.org</a><br />Version: version here<br />');
                 YAHOO.bloog.postDialog.render();
                 YAHOO.bloog.postDialog.show();
                 break;
