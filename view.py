@@ -169,8 +169,7 @@ class ViewPage(object):
             NUM_FULL_RENDERS[path] = 0
         NUM_FULL_RENDERS[path] += 1     # This lets us see % of cached views
                                         # in /admin/timings (see timings.py)
-        # tags = sorted(Tag.list(), key=lambda x: x['name'].lower())
-        tags = []  # Tag.list()
+        tags = sorted(Tag.list(), key=lambda x: x['name'].lower())
 
         # Define some parameters it'd be nice to have in views by default.
         template_params = {
