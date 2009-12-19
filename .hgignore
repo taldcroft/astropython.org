@@ -1,0 +1,4 @@
+bulkdata
+.*\.dat
+astropython.wpr
+datastore.db.*

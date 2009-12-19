@@ -1,0 +1,16 @@
+0.2.0
+-----
+Major updates working toward public release.
+
+- Add "About" page and associated handler, links.
+- Change required authorization for posting from "admin" to "user"
+- Add 'categories' element to config.PAGE to hold settings specific
+  to category list view pages.
+- Increase num_limit for list view from 20 to 50
+- Rewrite SearchHandler from scratch to use a simpler but presumably
+  less efficent method.  Hopefully this will scale for the needs of
+  astropython.org.
+- Enhancements to style.css to improve look and usability.
+- Improved blog_entries.html, base.html
+- Changed config "root_url" from py4ast.astropython.org to www.astropython.org
+

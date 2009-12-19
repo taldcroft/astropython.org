@@ -52,6 +52,7 @@ logging.info('Loading %s, app version = %s',
 categories = '/(blog|snippet|tutorial|resource)'
 ROUTES = [
     ('/*$', blog.RootHandler),
+    ('/about/*$', blog.AboutHandler),
     ('/403.html', blog.UnauthorizedHandler),
     ('/404.html', blog.NotFoundHandler),
     ('/([12]\d\d\d)/*$', blog.YearHandler),

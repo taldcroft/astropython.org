@@ -1,5 +1,5 @@
 application: py4ast
-version: 0-1-2-tla
+version: 0-2-0-tla
 runtime: python
 api_version: 1
 
@@ -46,5 +46,7 @@ skip_files: |
  (docs/.*)|
  (.*\.markdown)|
  (license\.txt)|
+ (test\.py)|
+ (app_console\.py)|
  (setup.py)
  )$

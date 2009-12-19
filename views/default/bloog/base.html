@@ -16,11 +16,10 @@
         <div id="wrapper">
             <a name="top"></a>
             <div id="masthead" class="fix">
-                <h1><a href="/">{{ blog.title }}</a></h1>
-                <div id="authorBlurb">
-                    <img src="/static/default/images/avatar.png" alt="Avatar" />
-                    <p id="authorIntro">
+                <h1>{{ blog.title|upper }} {{category_cfg.title|upper}}</h1>
                         {{ blog.description }}
+                <div id="authorBlurb">
+                    <p id="authorIntro">
                     </p>
                 </div>
             </div>
@@ -47,17 +46,10 @@
                 </li>
                 <!--  Put something on the right edge of top bar -->
                 <li class="skip">
-                  {% if user %}
-                    <a href="{{ logout_url }}" title="Logout">Logout
+                    <a href="/about" title="Information about astropython.org">About
                         <br/>
-                        <span>goodbye</span>
+                        <span>Site info</span>
                     </a>
-                  {% else %}
-                      <a href="{{ login_url }}" title="Login">Login
-                        <br/>
-                        <span>Google id</span>
-                    </a>
-                  {% endif %}
                 </li>
               </ul>
 <div id="mid" class="fix">
@@ -66,14 +58,11 @@
                 <div class="post">
                 <div class="entry">
                 <br>
-                <h2> Welcome to AstroPython </h2>
-                <p>Research in astronomy includes the analysis of astronomical images, parsing and manipulation of large catalogs, 
-                statistical yet often visual inference, and the creation of data visualizations for publication and dissemination of results. </p>
- 
-                <p>The purpose of this web site is to act as a knowledge base for performing this
-                research with the open source Python language. It should become a means for
-                collecting users' code snippets or scripts, lists of useful resources, and
-                general advice from their own experiences.</p>
+                <h2> Welcome to AstroPython </h2> <p>This site is a knowledge
+                base for research in astronomy using
+                Python.  More information about
+                the site and the AstroPython team is available via the <a
+                href="/about">About</a> link.</p>
                 </div>
                 </div>
                 
@@ -93,6 +82,12 @@
                 {% block second_column %}
                 <div id="midCol">
                     {% block search %}
+                     <div id="searchWrap">
+                         <form method="get" id="searchForm" action="/search">
+                             <input type="text" value="{{ searchterm }}" name="s" id="s" />
+                             <input id="searchsubmit" type="image" src="/static/default/images/btn_search.gif" alt="Search" />
+                         </form>
+                     </div>
                     {% endblock %}
 
                     {% block tags %}

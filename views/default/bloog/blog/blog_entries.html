@@ -3,21 +3,20 @@
 {% block first_column %}
 <div id="mainCol" class="fix"><a name="main"></a>
     <div class="post">
-        <h2>{{ category|capfirst }} entries</h2>
-        Sort by <a href="{{ category }}s?sort=title">Title</a> 
-        {% ifnotequal category "resource" %}<a href="{{ category }}s?sort=updated">, Date</a>, {% endifnotequal %}or <a href="{{ category }}s?sort=tag">Tags</a> 
+        <h2>{{category_cfg.title}}: {{category_cfg.subtitle}}</h2>
         {% if blog_entries %}
             <table>
-            <tr> <th> <a href="{{ category }}s?sort=title">Title</a> </th> 
+            <tr> <th> <a href="{{ category }}s?sort=title" title="Sort by title" >Title</a> </th> 
                  {% ifequal category "resource" %}
-                   <th> Description </th> 
-                 {% else %}
-                <th> <a href="{{ category }}s?sort=updated">Date</a> </th> 
-                 {% endifequal %}
-                <th> <a href="{{ category }}s?sort=tag">Tags</a> </th> 
-                 </tr>
+                  <th> Description </th> 
+                  <th> <a href="{{ category }}s?sort=tag" title="Sort and group the resources by Tag">Tags</a> </th> 
+                {% else %}
+                  <th> <a href="{{ category }}s?sort=-updated" title="Sort by date">Date</a> </th> 
+                  <th> Tags </th> 
+                {% endifequal %}
+              </tr>
             {% for blog in blog_entries %}
-              <tr> <td> <a href="{{ blog.permalink }}" alt="{{ blog.title }}">{{ blog.title }}</a> </td>
+              <tr> <td> <a href="{{ blog.permalink }}"  alt="{{ blog.title }}">{{ blog.title }}</a> </td>
                   {% ifequal category "resource" %}
                     <td> {{ blog.resource_description }}</td> 
                   {% else %}
@@ -32,7 +31,7 @@
                 {% for tag_blog_entry in tag_blog_entries %}
                   <tr> <th colspan=2> {{ tag_blog_entry.tag }} </th> </tr>
                   {% for blog in tag_blog_entry.blog_entries %}
-                    <tr> <td> <a href="{{ blog.permalink }}" alt="{{ blog.title }}">{{ blog.title }}</a> </td>
+                    <tr> <td> <a href="{{ blog.permalink }}" alt="{{blog.title}}">{{ blog.title }}</a> </td>
                       {% ifequal category "resource" %}
                         <td> {{ blog.resource_description }}</td> 
                       {% else %}

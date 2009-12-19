@@ -44,7 +44,7 @@ def get_thread_string(article, cur_thread_string):
 
 class Article(search.SearchableModel):
     unsearchable_properties = ['permalink', 'legacy_id', 'article_type', 
-                               'excerpt', 'html', 'format', 'tag_keys']
+                               'excerpt', 'html', 'format', 'tag_keys', 'category']
     json_does_not_include = ['assoc_dict']
 
     permalink = db.StringProperty(required=True)

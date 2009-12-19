@@ -53,6 +53,12 @@ indexes:
   properties:
   - name: article_type
   - name: category
+  - name: resource_description
+
+- kind: Article
+  properties:
+  - name: article_type
+  - name: category
   - name: tags
 
 - kind: Article
@@ -66,6 +72,13 @@ indexes:
   - name: article_type
   - name: category
   - name: updated
+
+- kind: Article
+  properties:
+  - name: article_type
+  - name: category
+  - name: updated
+    direction: desc
 
 - kind: Comment
   properties:

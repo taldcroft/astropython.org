@@ -8,7 +8,10 @@ APP_ROOT_DIR = os.path.abspath(os.path.dirname(__file__))
 
 # If we're debugging, turn the cache off, etc.
 # Set to true if we want to have our webapp print stack traces, etc
-DEBUG = os.environ['SERVER_SOFTWARE'].startswith('Dev')
+try:
+    DEBUG = os.environ['SERVER_SOFTWARE'].startswith('Dev')
+except KeyError:
+    DEBUG = True
 logging.info("Starting application in DEBUG mode: %s", DEBUG)
 
 # Don't change default_blog or default_page to prevent conflicts when merging #  Bloog source code updates.
@@ -24,14 +27,14 @@ BLOG = {
     # application due to mail api restrictions.
     "email": "aldcroft@astropython.org",
     "description": "A python resource for astronomers.",
-    "root_url": "http://py4ast.astropython.org",
+    "root_url": "http://www.astropython.org",
     "master_atom_url": "/feeds/atom.xml",
     # By default, visitors can comment on article for this many days.
     # This can be overridden by setting article.allow_comments
     "days_can_comment": 60,
     # You can override this default for each page through a handler's call to 
     #  view.ViewPage(cache_time=...)
-    "cache_time": 0 if DEBUG else 3600,
+    "cache_time": 3600,
 
     # Use the default YUI-based theme.
     # If another string is used besides 'default', calls to static files and
@@ -58,6 +61,9 @@ BLOG = {
     "legacy_entry_redirect": False,
 }
 
+if DEBUG:
+    BLOG['cache_time'] = 0
+
 PAGE = {
     "title": BLOG["title"],
     "articles_per_page": 5,
@@ -65,47 +71,58 @@ PAGE = {
         { "title": "Forum", 
           "description": "News and views", 
           "url": "/blogs"},
-        { "title": "Snippets", 
-          "description": "Bits of code ", 
-          "url": "/snippets"},
-        { "title": "Tutorials", 
-          "description": "and HowTo's", 
-          "url": "/tutorials"},
         { "title": "Resources", 
           "description": "Useful links", 
           "url": "/resources"},
+        { "title": "Tutorials", 
+          "description": "and HowTo's", 
+          "url": "/tutorials"},
+        { "title": "Snippets", 
+          "description": "Bits of code ", 
+          "url": "/snippets"},
         { "title": "Contact", 
           "description": "Send us a note", 
           "url": "/contact"},
     ],
     "featuredMyPages": {
         "title": "Featured links",
-        "description": "Astropython resources",
+        "description": "",
         "entries": [
             { "title": "Python", 
               "url": "http://python.org", 
               "description": "Home page" },
+            { "title": "Numpy", 
+              "url": "http://numpy.scipy.org", 
+              "description": "Core numerical libraries" },
             { "title": "Scipy", 
               "url": "http://www.scipy.org", 
-              "description": "Scientific tools for python" },
+              "description": "Scientific tools for Python" },
+            { "title": "Matplotlib", 
+              "url": "http://matplotlib.sourceforge.net", 
+              "description": "Python 2D plotting library" },
+            { "title": "ATpy", 
+              "url": "http://atpy.sourceforge.net", 
+              "description": "Astronomical tables in Python" },
+            { "title": "APLpy", 
+              "url": "http://aplpy.sourceforge.net", 
+              "description": "Hi-quality imaging data plots" },
+            { "title": "Sherpa", 
+              "url": "http://cxc.harvard.edu/sherpa/", 
+              "description": "Data modeling and fitting" },
         ]
     },
-    #"featuredOthersPages": {
-        #"title": "Google App Engine",
-        #"description": "Developer Resources",
-        #"entries": [
-            #{ "title": "Google App Engine", 
-              #"url": "http://code.google.com/appengine/", 
-              #"description": "The mothership" },
-            #{ "title": "App Engine Group", 
-              #"url": "http://groups.google.com/group/google-appengine", 
-              #"description": "Developer group" },
-            #{ "title": "App Engine Open Source", 
-              #"url": "http://groups.google.com/group/google-appengine/web/google-app-engine-open-source-projects", 
-              #"description": "Code!" },
-            #{ "title": "App Engine Console", 
-              #"url": "http://appengine.google.com", 
-              #"description": "Your apps" }
-        #]
-    #},
+    'categories': {
+        'blog': {'default_sort': '-updated',
+                 'title': 'Forum',
+                 'subtitle': 'announcements, discussions, digressions'},
+        'resource': {'default_sort': 'resource_description',
+                 'title': 'Resources',
+                 'subtitle': 'for the discerning python astronomer',},
+        'tutorial': {'default_sort': 'title',
+                 'title': 'Tutorials',
+                 'subtitle': 'for the learning python astronomer',},
+        'snippet': {'default_sort': 'title',
+                 'title': 'Snippets',
+                 'subtitle': 'for bits of code without a home'},
+        }
 }

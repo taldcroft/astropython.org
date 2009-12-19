@@ -22,12 +22,13 @@ Software available at http://www.github.com/DocSavage/bloogle
 *{margin:0;padding:0;}
 html,body{background:#FFF;color:#333;text-align:center;} 
 body{font:12px arial,helvetica,verdana,sans-serif;}
-h1{font-size:22px;}
-h2{font-size:18px;}
-h3{font-size:16px;}
-h4{font-size:14px;}
-a{color:#333;text-decoration:none;}
-a:hover{color:#666;}
+h1{font-size:22px;color:#333}
+h2{font-size:18px;color:#333}
+h3{font-size:16px;color:#333}
+h4{font-size:14px;color:#333}
+a{color:#722;text-decoration:none;}
+a:hover{color:#33b;}
+/* a:hover{color:#d44;}*/
 #wrapper{border-top:3px solid #EEE;margin:20px auto;text-align:left;width:965px;} 
 #wrapper pre, #wrapper p { clear: none; }  
 th,td{padding:3px 20px 3px 0px;}
@@ -48,7 +49,7 @@ th,td{padding:3px 20px 3px 0px;}
 #authorIntro{line-height:1.4em;width:400px;float:right;margin:8px 0 0 0;}
 ul.nav{list-style:none;background:#EEE;}
 .nav li{border-right:1px solid #DDD;float:left;display:block;width:100px;}
-.nav li a{font-size:11px;outline:none;color:#333;text-decoration:none;display:block;padding:5px 0 12px 5px;width:99px;text-transform:uppercase;}
+.nav li a{font-size:11px;outline:none;color:#933;text-decoration:none;display:block;padding:5px 0 12px 5px;width:99px;text-transform:uppercase;}
 .nav li a span{font-size:11px;color:#777;text-transform:lowercase;}
 .nav li a:hover{background:#333;color:#eee!important;width:95px;}
 * html .nav li a:hover{background:#333;width:99px;}
@@ -56,7 +57,7 @@ ul.nav{list-style:none;background:#EEE;}
 .nav li.skip a{width:100px;}
 li.top{border-left:1px solid #DDD;float:right;display:block width:100px;}
 li.top a{width:100px;}
-.nav li.skip a:hover, li.top a:hover { background: transparent;color: #333 !important;}
+
 #archives{background:#333;}
 #archives ul{list-style:none;padding:5px 0 3px 0;}
 #archives li{float:left;display:block;width:101px;}
@@ -121,7 +122,7 @@ ul#imgLinks{list-style:none;margin:7px 0;}
 .entry table tr.alt { background: #eee; }
 
 /* style pagination buttons */
-#more_reading { color: #7F7F7F; font-size: 11px; text-transform: uppercase; margin-bottom: 25px; text-align: right; }
+#more_reading { color: "blue"; font-size: 14px; text-transform: uppercase; margin-bottom: 25px; text-align: right; font-weight:bold}
 #more_reading p, #more_reading img { vertical-align: middle; }
 #more_reading a img { border: none; margin:0 0 3px 2px; }
 
@@ -200,3 +201,5 @@ ol.pingslist{margin:1.5em 2em;font-size:12px;}
 .fix{display:inline-block;} 
 * html .fix{height:1%;}
 .fix{display:block;}
+
+.about p{padding-bottom:5px}

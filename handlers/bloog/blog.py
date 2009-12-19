@@ -381,6 +381,11 @@ class UnauthorizedHandler(webapp.RequestHandler):
         self.error(403)
         view.ViewPage(cache_time=36000).render(self)
 
+class AboutHandler(restful.Controller):
+    def get(self):
+        page = view.ViewPage()
+        page.render(self)
+
 class RootHandler(restful.Controller):
     def get(self):
         logging.debug("RootHandler#get")
@@ -390,7 +395,7 @@ class RootHandler(restful.Controller):
             db.Query(models.blog.Article). \
             filter('article_type =', 'blog entry').order('-published'))
 
-    @authorized.role("admin")
+    @authorized.role("user")
     def post(self):
         logging.debug("RootHandler#post")
         process_article_submission(handler=self, article_type='article')
@@ -409,8 +414,6 @@ class ArticlesHandler(restful.Controller):
 # TODO -- Make it DRY by combining Article/MonthHandler
 class ArticleHandler(restful.Controller):
     def get(self, path):
-        logging.debug("ArticleHandler#get on path (%s)", path)
-
         # Check undated pages
         article = db.Query(models.blog.Article). \
                 filter('permalink =', path).get()
@@ -514,10 +517,13 @@ class BlogEntryHandler(restful.Controller):
 
 class BlogEntriesHandler(restful.Controller):
     def get(self, category):
-        sort_attribute = self.request.get('sort', 'title')
+        category_cfg = config.PAGE['categories'][category]
+        sort_attribute = self.request.get('sort', category_cfg['default_sort'])
         logging.debug("BlogEntriesHandler#get sorted by %s", sort_attribute)
         page = view.ViewPage()
-        params = {'sort': sort_attribute, 'category': category}
+        params = {'sort': sort_attribute,
+                  'category': category,
+                  'category_cfg': category_cfg}
         if sort_attribute != 'tag':
             page.render_query(
                 self, 'blog_entries',
@@ -525,7 +531,7 @@ class BlogEntriesHandler(restful.Controller):
                 filter('article_type =', 'blog entry'). \
                 filter('category =', category). \
                 order(sort_attribute), params=params,
-                num_limit=20)
+                num_limit=50)
         else:
             # Set up to make a page where articles are grouped by tag
             all_blog_entries = db.Query(models.blog.Article). \
@@ -562,23 +568,39 @@ class TagHandler(restful.Controller):
             {'tag': tag})
 
 class SearchHandler(restful.Controller):
+    def fetch(self, limit=None, offset=None):
+        search_term = self.request.get("s")
+        terms_keys = []
+        for term in search_term.split():
+            term_keys = db.Query(models.blog.Article, keys_only=True) \
+                         .filter('__searchable_text_index =',term.lower()) \
+                         .order('-published') \
+                         .fetch(1000)
+            terms_keys.append(term_keys)
+
+        if len(terms_keys) > 0:
+            keys = set(terms_keys[0])
+            for term_keys in terms_keys[1:]:
+                keys &= set(term_keys)
+        else:
+            keys = set()
+
+        # This is potentially wasteful because it gets all the articles
+        # for the given keys and then sorts and limits.  But I can't figure
+        # a better way.
+        articles = db.get(keys)
+        articles.sort(key=lambda x:x.published, reverse=True)
+        if limit is not None and offset is not None:
+            limit += offset
+        return articles[slice(offset, limit)]
+
     def get(self):
-        from google.appengine.api import datastore_errors
         search_term = self.request.get("s")
         query_string = 's=' + urllib.quote_plus(search_term) + '&'
         page = view.ViewPage()
-        try:
-            page.render_query(
-                self, 'articles', 
-                models.blog.Article.all().search(search_term). \
-                order('-published'), 
-                {'search_term': search_term, 'query_string': query_string})
-        except datastore_errors.NeedIndexError:
-            page.render(self, {'search_term': search_term,
-                               'search_error_message': """
-                               Sorry, full-text searches are currently limited
-                               to single words until a later AppEngine update.
-                               """})
+        page.render_query(self, 'articles', self,
+                           {'search_term': search_term,
+                            'query_string': query_string})
 
 class YearHandler(restful.Controller):
     def get(self, year):
@@ -609,7 +631,7 @@ class MonthHandler(restful.Controller):
             {'title': 'Articles for ' + month + '/' + year, 
              'year': year, 'month': month})
 
-    @authorized.role("admin")
+    @authorized.role("user")
     def post(self, category, year, month):
         """ Add a blog entry. Since we are POSTing, the server handles 
             creation of the permalink url. """
