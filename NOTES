@@ -1,0 +1,12 @@
+cd bulkdata
+bulkloader.py --url=http://py4ast.appspot.com/remote_api --kind=Article --filename=Article.dat --dump ../
+bulkloader.py --url=http://py4ast.appspot.com/remote_api --kind=Comment --filename=Comment.dat --dump ../
+bulkloader.py --url=http://py4ast.appspot.com/remote_api --kind=CounterShard --filename=CounterShard.dat --dump ../
+bulkloader.py --url=http://py4ast.appspot.com/remote_api --kind=Tag --filename=Tag.dat --dump ../
+
+bulkloader.py --restore  --app_id=py4ast --url=http://localhost:8080/remote_api --kind=Article --filename=Article.dat ../
+bulkloader.py --restore --app_id=py4ast --url=http://localhost:8080/remote_api --kind=Comment --filename=Comment.dat ../
+bulkloader.py --restore --app_id=py4ast --url=http://localhost:8080/remote_api --kind=CounterShard --filename=CounterShard.dat ../
+bulkloader.py --restore --app_id=py4ast --url=http://localhost:8080/remote_api --kind=Tag --filename=Tag.dat ../
+
+ 
