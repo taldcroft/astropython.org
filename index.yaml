@@ -71,6 +71,12 @@ indexes:
   properties:
   - name: article_type
   - name: category
+  - name: title_lower
+
+- kind: Article
+  properties:
+  - name: article_type
+  - name: category
   - name: updated
 
 - kind: Article

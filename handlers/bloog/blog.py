@@ -212,6 +212,7 @@ def process_article_edit(handler, permalink):
         process_embedded_code(article)
         if article.category == 'resource':
             update_resource_values(property_hash['body'], article)
+        article.title_lower = article.title.lower()
         article.put()
         restful.send_successful_response(handler, '/' + article.permalink)
         view.invalidate_cache()
@@ -246,6 +247,7 @@ def process_article_submission(handler, article_type):
             {'relevant_links': handler.request.get('relevant_links'),
              'amazon_items': handler.request.get('amazon_items')})
         process_embedded_code(article)
+        article.title_lower = article.title.lower()
         article.put()
         for key in article.tag_keys:
             db.get(key).counter.increment()

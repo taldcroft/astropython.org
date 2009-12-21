@@ -115,7 +115,7 @@ PAGE = {
         'blog': {'default_sort': '-updated',
                  'title': 'Forum',
                  'subtitle': 'announcements, discussions, digressions'},
-        'resource': {'default_sort': 'resource_description',
+        'resource': {'default_sort': 'title',
                  'title': 'Resources',
                  'subtitle': 'for the discerning python astronomer',},
         'tutorial': {'default_sort': 'title',

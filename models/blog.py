@@ -51,6 +51,7 @@ class Article(search.SearchableModel):
     # Useful for aliasing of old urls
     legacy_id = db.StringProperty()
     title = db.StringProperty(required=True)
+    title_lower = db.StringProperty()   # For case-independent alphabetical sorting
     article_type = db.StringProperty(required=True, # 'article' is getting orphaned by design
                                      choices=set(["article", "blog entry"]))  
     category = db.StringProperty(default="blog",
