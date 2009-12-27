@@ -2,3 +2,14 @@ bulkdata
 .*\.dat
 astropython.wpr
 datastore.db.*
+
+# use glob syntax.
+syntax: glob
+
+*.DS_Store
+*.pyc
+*~
+
+# switch to regexp syntax.
+syntax: regexp
+^\.pc/

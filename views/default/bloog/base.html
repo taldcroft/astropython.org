@@ -13,46 +13,49 @@
         {% endblock %}
     </head>
     <body class="yui-skin-sam">
-        <div id="wrapper">
-            <a name="top"></a>
-            <div id="masthead" class="fix">
-                <h1>{{ blog.title|upper }} {{category_cfg.title|upper}}</h1>
-                        {{ blog.description }}
-                <div id="authorBlurb">
-                    <p id="authorIntro">
-                    </p>
+        <div id="topbar">
+            <div id="wrapper">
+                <a name="top"></a>
+                <div id="masthead" class="fix">
+                    <!-- <div id="logo"> </div> -->
+                    <img src="static/images/logo_basic.png"/>
                 </div>
-            </div>
-            <ul class="nav fix">
-                <li>
-                    <a href="/" title="Return to the the frontpage">Home
-                        <br/>
-                        <span>Front page</span>
-                    </a>
-                </li>
-                {% for link in navlinks %}
-                <li>
-                    <a href="{{ link.url }}" title="{{ link.description }}">{{ link.title }}
-                        <br/>
-                        <span>{{ link.description }}</span>
-                    </a>
-                </li>
-                {% endfor %}
-                <li>
-                    <a href="{{ blog.master_atom_url }}" title="Subscribe to the main Atom feed">Atom
-                        <br/>
-                        <span>Syndication</span>
-                    </a>
-                </li>
-                <!--  Put something on the right edge of top bar -->
-                <li class="skip">
-                    <a href="/about" title="Information about astropython.org">About
-                        <br/>
-                        <span>Site info</span>
-                    </a>
-                </li>
-              </ul>
-<div id="mid" class="fix">
+                <div id='filler'></div>
+                <ul class="nav fix">
+                    <li>
+                        <a href="/" title="Return to the the frontpage">Home
+                            <br/>
+                            <span>Front page</span>
+                        </a>
+                    </li>
+                    {% for link in navlinks %}
+                    <li>
+                        <a href="{{ link.url }}" title="{{ link.description }}">{{ link.title }}
+                            <br/>
+                            <span>{{ link.description }}</span>
+                        </a>
+                    </li>
+                    {% endfor %}
+                    <li>
+                        <a href="{{ blog.master_atom_url }}" title="Subscribe to the main Atom feed">Atom
+                            <br/>
+                            <span>Syndication</span>
+                        </a>
+                    </li>
+                    <!--  Put something on the right edge of top bar -->
+                    <li class="skip">
+                        <a href="/about" title="Information about astropython.org">About
+                            <br/>
+                            <span>Site info</span>
+                        </a>
+                    </li>
+                  </ul>
+                  </div>
+        </div>
+        
+        <div id="wrapper">
+            
+            <div id="mid" class="fix">
                 <!-- First column: Main content -->
                 {% block first_column %}
                 <div class="post">
@@ -190,7 +193,10 @@
                 {% block third_column %}
                 {% endblock %}
             </div>
-
+            </div>
+        </div>
+        <div id="bottombar">
+            <div id="wrapper">
             <div id="footer">
                 <ul class="nav fix">
                     <li>
@@ -245,9 +251,9 @@
                         {% endif %}
                         </p>
                     </div>
-                    <img id="poweredby" src="/static/images/appengine-noborder-120x30.gif" alt="Powered by Google App Engine" />
+                    <img id="poweredby" src="http://code.google.com/appengine/images/appengine-silver-120x30.gif" alt="Powered by Google App Engine" />
                 </div>
-            </div>
+                </div>
         </div>
 
         <script type="text/javascript" src="http://yui.yahooapis.com/2.5.2/build/yahoo-dom-event/yahoo-dom-event.js"></script>

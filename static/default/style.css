@@ -20,18 +20,20 @@ Software available at http://www.github.com/DocSavage/bloogle
 */
 
 *{margin:0;padding:0;}
-html,body{background:#FFF;color:#333;text-align:center;} 
+html,body{background:#FFF;color:#666;text-align:center;} 
 body{font:12px arial,helvetica,verdana,sans-serif;}
-h1{font-size:22px;color:#333}
-h2{font-size:18px;color:#333}
-h3{font-size:16px;color:#333}
-h4{font-size:14px;color:#333}
-a{color:#722;text-decoration:none;}
-a:hover{color:#33b;}
-/* a:hover{color:#d44;}*/
-#wrapper{border-top:3px solid #EEE;margin:20px auto;text-align:left;width:965px;} 
+h1{font-size:22px;color:#666}
+h2{font-size:18px;color:#666}
+h3{font-size:16px;color:#666}
+h4{font-size:14px;color:#666}
+a{color:orange;text-decoration:none;font-weight:bold;}
+a:hover{color:red;}
+#topbar{background:#333;height:170px;z-index:-1;}
+/*#bottombar{background:#333;height:200px;z-index:-1;top:-200px;}*/
+#wrapper{border-top:0px solid #EEE;margin:0px auto;text-align:left;width:965px;} 
 #wrapper pre, #wrapper p { clear: none; }  
 th,td{padding:3px 20px 3px 0px;}
+#bottombar{bottom: 0; height:150px;background-color:#333;color:white;}
 
 .popupDialog div.bd{text-align:center;}
 .popupDialog form{text-align: left;}
@@ -41,21 +43,26 @@ th,td{padding:3px 20px 3px 0px;}
 .popupDialog form textarea{width: 400px; margin:0px 5px;}
 
 /* masthead / footer - navigation and categories */
-#masthead{padding:5px 0;}
+#masthead{padding:5px;background: #333;height:100px;}
+#masthead h1{color:white;}
+#masthead{color:white;}
+#masthead img{padding: 10px 0px 20px 0px}
 #masthead h1 a{text-transform:uppercase;width:400px;float:left;margin:12px 0 0 0;}
 #masthead h1 a em{font-style:normal;color:#555;}
 #authorBlurb img{float:right;width:42px;height:42px;border:3px solid #EEE;}
 #authorIntro a{font-weight:bold;} 
 #authorIntro{line-height:1.4em;width:400px;float:right;margin:8px 0 0 0;}
-ul.nav{list-style:none;background:#EEE;}
-.nav li{border-right:1px solid #DDD;float:left;display:block;width:100px;}
-.nav li a{font-size:11px;outline:none;color:#933;text-decoration:none;display:block;padding:5px 0 12px 5px;width:99px;text-transform:uppercase;}
-.nav li a span{font-size:11px;color:#777;text-transform:lowercase;}
-.nav li a:hover{background:#333;color:#eee!important;width:95px;}
+#navbar{height:20px;}
+#filler{height:16px;}
+ul.nav{list-style:none;background:#333;}
+.nav li{border-right:1px solid #666;float:left;display:block;width:100px;}
+.nav li a{font-size:11px;outline:none;color:white ;text-decoration:none;display:block;padding:5px 0 12px 5px;width:99px;text-transform:uppercase;}
+.nav li a span{font-size:11px;color:#666;text-transform:lowercase;}
+.nav li a:hover{background:#666;color:#eee!important;width:95px;}
 * html .nav li a:hover{background:#333;width:99px;}
-.nav li.skip{border-left:1px solid #DDD;float:right;display:block width:100px;}
+.nav li.skip{border-left:1px solid #666;float:right;display:block width:100px;}
 .nav li.skip a{width:100px;}
-li.top{border-left:1px solid #DDD;float:right;display:block width:100px;}
+li.top{border-left:1px solid #666;float:right;display:block width:100px;}
 li.top a{width:100px;}
 
 #archives{background:#333;}
@@ -66,7 +73,7 @@ li.top a{width:100px;}
 #attribution {padding:10px 0 5px 0;}
 #attribution div {float:left;}
 #attribution #downloadlinks p {font-size:11px; padding: 0 0 5px 5px;}
-#poweredby {float:right;width:120px;height:30px;}
+#poweredby {float:right;width:120px;height:30px;padding-top: 3px;}
 
 /* main - middle content and columns */
 #mid{}#mainCol{float:left;margin:26px 0 0 0;width:649px;}
@@ -109,10 +116,11 @@ ul#imgLinks{list-style:none;margin:7px 0;}
 .entry h3{margin:1em 0;}
 .post .entry{line-height:1.4em;overflow:hidden;}
 .post .entry p{margin:1em 0;}
-.post .entry a{background:url(images/dot.gif) repeat-x bottom left;font-weight:bold;}
+.post .entry a{background:url(images/dot.gif) repeat-x none left;font-weight:bold;}
+.post .entry a:hover{color:red;}
 .entry blockquote,cite,code{margin:0.8em 1.3em; display:block;}
 .entry ul{margin:0 1.3em 0;list-style:square;}
-.entry li a{color:#333;font-weight:bold;background:url(images/dot.gif) repeat-x bottom left;}
+.entry li a{color:orange;font-weight:bold;background:url(images/dot.gif) repeat-x none left;}
 .entry ul li{margin:0 10px 7px 7px;}
 .entry ol{margin:0 1em 0 3em;}
 .entry ol li{margin:0 0 7px 0;}
@@ -187,8 +195,9 @@ ol.pingslist{margin:1.5em 2em;font-size:12px;}
 .commentslist code{background:transparent;}
 
 /* footer - text string and links */
-#footer p {padding-top: 7px; }
-#footer p a{font-weight:bold;color:#333;}
+#footer p {padding-top: 14px; }
+#footer p a{font-weight:bold;color:orange;font-weight:bold;}
+#footer p a:hover{font-weight:bold; color: red; font-weight: bold;}
 #footer p.attribution {font-size: 11px;}
 
 /* float rules */
