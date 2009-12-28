@@ -58,6 +58,7 @@ ul.nav{list-style:none;background:#333;}
 .nav li{border-right:1px solid #666;float:left;display:block;width:100px;}
 .nav li a{font-size:11px;outline:none;color:white ;text-decoration:none;display:block;padding:5px 0 12px 5px;width:99px;text-transform:uppercase;}
 .nav li a span{font-size:11px;color:#666;text-transform:lowercase;}
+.nav li a:hover span{color:#333} 
 .nav li a:hover{background:#666;color:#eee!important;width:95px;}
 * html .nav li a:hover{background:#333;width:99px;}
 .nav li.skip{border-left:1px solid #666;float:right;display:block width:100px;}
