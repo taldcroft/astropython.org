@@ -26,7 +26,7 @@ h1{font-size:22px;color:#666}
 h2{font-size:18px;color:#666}
 h3{font-size:16px;color:#666}
 h4{font-size:14px;color:#666}
-a{color:orange;text-decoration:none;font-weight:bold;}
+a{color:darkorange;text-decoration:none;font-weight:bold;}
 a:hover{color:red;}
 #topbar{background:#333;height:170px;z-index:-1;}
 /*#bottombar{background:#333;height:200px;z-index:-1;top:-200px;}*/
@@ -121,7 +121,7 @@ ul#imgLinks{list-style:none;margin:7px 0;}
 .post .entry a:hover{color:red;}
 .entry blockquote,cite,code{margin:0.8em 1.3em; display:block;}
 .entry ul{margin:0 1.3em 0;list-style:square;}
-.entry li a{color:orange;font-weight:bold;background:url(images/dot.gif) repeat-x none left;}
+.entry li a{color:darkorange;font-weight:bold;background:url(images/dot.gif) repeat-x none left;}
 .entry ul li{margin:0 10px 7px 7px;}
 .entry ol{margin:0 1em 0 3em;}
 .entry ol li{margin:0 0 7px 0;}
@@ -197,7 +197,7 @@ ol.pingslist{margin:1.5em 2em;font-size:12px;}
 
 /* footer - text string and links */
 #footer p {padding-top: 14px; }
-#footer p a{font-weight:bold;color:orange;font-weight:bold;}
+#footer p a{font-weight:bold;color:darkorange;font-weight:bold;}
 #footer p a:hover{font-weight:bold; color: red; font-weight: bold;}
 #footer p.attribution {font-size: 11px;}
 
