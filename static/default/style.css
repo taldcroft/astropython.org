@@ -33,7 +33,7 @@ a:hover{color:red;}
 #wrapper{border-top:0px solid #EEE;margin:0px auto;text-align:left;width:965px;} 
 #wrapper pre, #wrapper p { clear: none; }  
 th,td{padding:3px 20px 3px 0px;}
-#bottombar{bottom: 0; height:150px;background-color:#333;color:white;}
+#bottombar{bottom: 0; height:150px;background-color:#333;color:#666;}
 
 .popupDialog div.bd{text-align:center;}
 .popupDialog form{text-align: left;}
