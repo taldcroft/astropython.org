@@ -20,13 +20,13 @@ Software available at http://www.github.com/DocSavage/bloogle
 */
 
 *{margin:0;padding:0;}
-html,body{background:#FFF;color:#666;text-align:center;} 
+html,body{background:#FFF;color:#333;text-align:center;} 
 body{font:12px arial,helvetica,verdana,sans-serif;}
-h1{font-size:22px;color:#666}
-h2{font-size:18px;color:#666}
-h3{font-size:16px;color:#666}
-h4{font-size:14px;color:#666}
-a{color:darkorange;text-decoration:none;font-weight:bold;}
+h1{font-size:22px;color:#333}
+h2{font-size:18px;color:#333}
+h3{font-size:16px;color:#333}
+h4{font-size:14px;color:#333}
+a{color:#722;text-decoration:none;font-weight:bold;}
 a:hover{color:red;}
 #topbar{background:#333;height:170px;z-index:-1;}
 /*#bottombar{background:#333;height:200px;z-index:-1;top:-200px;}*/
@@ -34,7 +34,6 @@ a:hover{color:red;}
 #wrapper pre, #wrapper p { clear: none; }  
 th,td{padding:3px 20px 3px 0px;}
 #bottombar{bottom: 0; height:150px;background-color:#333;color:#666;}
-
 .popupDialog div.bd{text-align:center;}
 .popupDialog form{text-align: left;}
 .popupDialog form p{margin-bottom:7px;}
@@ -83,20 +82,20 @@ li.top a{width:100px;}
 /* style individual sidebars */
 #midCol ul a{font-weight:bold;}
 #midCol{color:#444;float:left;margin:25px 0 0 33px;width:250px;line-height:1.3em;}
-#midCol p{color:#777;}
+#midCol p{color:#333;}
 #searchWrap,
 .middle_links{margin-bottom:20px;}
 #searchWrap input{vertical-align:middle;}
 #searchWrap #s{font-size:1.1em;border:1px solid #BBB;padding:1px 2px;width:220px;}
 .middle_links h3{margin-bottom:7px;}
 #midCol ul{list-style:none;margin:8px 0 4px;}
-.middle_links ul li{background:url(images/li.gif) no-repeat 0 3px;color:#7F7F7F;line-height:1.2em;border-top:1px solid #BBB;padding:4px 0 4px 16px;}
+.middle_links ul li{background:url(images/li.gif) no-repeat 0 3px;color:#333;line-height:1.2em;border-top:1px solid #BBB;padding:4px 0 4px 16px;}
 #tertCol{float:left;width:214px;margin:18px 0 0 33px;}
-#tertCol p{color:#777;}
+#tertCol p{color:#333;}
 #elseWhere{margin:0 0 20px 0;}
 #elseWhere h3{margin-bottom:7px;}
 ul#imgLinks{list-style:none;margin:7px 0;}
-#imgLinks li{color:#7F7F7F;line-height:1.2em;padding:0 0 1px;}
+#imgLinks li{color:#7f7f7f;line-height:1.2em;padding:0 0 1px;}
 #imgLinks li a img{border:3px solid #EEE;width:208px;color:#333;font-weight:bold;}
 #imgLinks li a img.anyheight{border:none;width:214px;color:#333;font-weight:bold;}
 #imgLinks li a:hover img{border-color:#DDD;}
@@ -114,6 +113,7 @@ ul#imgLinks{list-style:none;margin:7px 0;}
 .post{margin:0 0 15px 0;}
 .post h2{line-height:1.2em;margin-bottom:7px;}
 .post h2 a{width:100%;display:block;outline:none;}
+.post th {font-size: 16px;}
 .entry h3{margin:1em 0;}
 .post .entry{line-height:1.4em;overflow:hidden;}
 .post .entry p{margin:1em 0;}
@@ -121,7 +121,7 @@ ul#imgLinks{list-style:none;margin:7px 0;}
 .post .entry a:hover{color:red;}
 .entry blockquote,cite,code{margin:0.8em 1.3em; display:block;}
 .entry ul{margin:0 1.3em 0;list-style:square;}
-.entry li a{color:darkorange;font-weight:bold;background:url(images/dot.gif) repeat-x none left;}
+.entry li a{color:#722;font-weight:bold;background:url(images/dot.gif) repeat-x none left;}
 .entry ul li{margin:0 10px 7px 7px;}
 .entry ol{margin:0 1em 0 3em;}
 .entry ol li{margin:0 0 7px 0;}
@@ -136,7 +136,7 @@ ul#imgLinks{list-style:none;margin:7px 0;}
 #more_reading a img { border: none; margin:0 0 3px 2px; }
 
 /* tags */
-p.tags a {font-weight:normal; margin: 0 0.8em; white-space: nowrap; color: #777777; background: transparent url(images/dot.gif) repeat-x scroll left bottom;}
+p.tags a {font-weight:normal; margin: 0 0.8em; white-space: nowrap; color: #333; background: transparent url(images/dot.gif) repeat-x scroll left bottom;}
 
 /* style me some comments and inputs */
 .initialHide{display:none;}
@@ -197,7 +197,7 @@ ol.pingslist{margin:1.5em 2em;font-size:12px;}
 
 /* footer - text string and links */
 #footer p {padding-top: 14px; }
-#footer p a{font-weight:bold;color:darkorange;font-weight:bold;}
+#footer p a{font-weight:bold;color:#722;font-weight:bold;}
 #footer p a:hover{font-weight:bold; color: red; font-weight: bold;}
 #footer p.attribution {font-size: 11px;}
 

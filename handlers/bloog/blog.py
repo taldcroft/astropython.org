@@ -533,7 +533,7 @@ class BlogEntriesHandler(restful.Controller):
                 filter('article_type =', 'blog entry'). \
                 filter('category =', category). \
                 order(sort_attribute), params=params,
-                num_limit=50)
+                num_limit=150)
         else:
             # Set up to make a page where articles are grouped by tag
             all_blog_entries = db.Query(models.blog.Article). \

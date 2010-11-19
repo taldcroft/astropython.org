@@ -68,19 +68,19 @@ PAGE = {
     "title": BLOG["title"],
     "articles_per_page": 5,
     "navlinks": [
+        { "title": "Resources", 
+          "description": "and tools", 
+          "url": "/resources"},
         { "title": "Forum", 
           "description": "News and views", 
           "url": "/blogs"},
-        { "title": "Resources", 
-          "description": "Useful links", 
-          "url": "/resources"},
         { "title": "Tutorials", 
           "description": "and HowTo's", 
           "url": "/tutorials"},
         { "title": "Snippets", 
           "description": "Bits of code ", 
           "url": "/snippets"},
-        { "title": "Contact", 
+        { "title": "Contribute", 
           "description": "Send us a note", 
           "url": "/contact"},
     ],
@@ -114,15 +114,20 @@ PAGE = {
     'categories': {
         'blog': {'default_sort': '-updated',
                  'title': 'Forum',
-                 'subtitle': 'announcements, discussions, digressions'},
+                 'description': 'The forum features announcements, questions and discussions.'},
         'resource': {'default_sort': 'title_lower',
                  'title': 'Resources',
-                 'subtitle': 'for the discerning python astronomer',},
+                 'description': """Following is a list of Python resources for astronomers.  
+                                   These resources include simple modules, larger packages, full analysis
+                                   environments, useful documents, and web sites.""",
+                 },
         'tutorial': {'default_sort': 'title_lower',
                  'title': 'Tutorials',
-                 'subtitle': 'for the learning python astronomer',},
+                 'description': 'This section contains tutorials for the learning python astronomer.',},
         'snippet': {'default_sort': 'title_lower',
                  'title': 'Snippets',
-                 'subtitle': 'for bits of code without a home'},
+                 'description': """This section provides a home for those useful and instructive little bits of code 
+                                that haven't quite made it into a project for distribution.  Here it's important to
+                                not be shy and don't worry if it isn't the most perfect code ever."""},
         }
 }

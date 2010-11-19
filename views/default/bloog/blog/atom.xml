@@ -24,7 +24,7 @@
         <published>{{ article.rfc3339_published}}</published>
 
         <author>
-            <name>{{ blog.author }}</name>
+            <name>{{ article.user }}</name>
             <uri>{{ blog.root_url }}</uri>
         </author>
 

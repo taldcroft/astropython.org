@@ -17,7 +17,7 @@
             <div id="wrapper">
                 <a name="top"></a>
                 <div id="masthead" class="fix">
-                    <a href="/about"><img src="/static/images/logo_basic.png"/ border=0> </a>
+                    <a href="/"><img src="/static/images/logo.png"/ border=0> </a>
                 </div>
                 <div id='filler'></div>
                 <ul class="nav fix">
@@ -60,12 +60,30 @@
                 <div class="post">
                 <div class="entry">
                 <br>
-                <h2> Welcome to AstroPython </h2> <p>This site is a community-driven knowledge
-                base for research in astronomy using
-                Python.  For more information about
-                the site, how to contribute, and the AstroPython team please
-                click on the <a
-                href="/about">About</a> link.</p>
+                <h2> Welcome to AstroPython </h2> <p> 
+
+               <p>The purpose of this web site is to act as a community
+               knowledge base for performing astronomy research with 
+               Python. It provides lists of useful <a
+                    href="/resources">resources</a>, a <a href="/blogs">forum</a> for
+               general discussion, advice, or relevant news items, collecting
+               users' code
+               <a href="/snippets">snippets</a> or scripts, and longer <a
+               href="/tutorials">tutorials</a> on specific topics.  The topics
+               within these pages are presented in a list view with the ability
+               to sort by date or topic.  A traditional "blog" view of the most
+               recently posted topics is visible from the site <a
+               href="/">Home</a> page.
+
+                  <h2> Contribute </h2>
+                <p> Contributions from the community are strongly encouraged.
+                    If you are interested please contact the AstroPython team
+                    via the <a href="/contact">Contribute</a> page.  We can either
+                    post material on your
+                    behalf or give you an astropython.org user account to allow
+                    your own postings.
+                    </p>
+
                 </div>
                 </div>
                 
@@ -114,7 +132,7 @@
                     {% if user %}
                         <!-- Administrative Console -->
                         <div class="middle_links">
-                            <h3>Astropython contributer</h3>
+                            <h3>AstroPython contributer</h3>
                             <ul>
                                 <li><a id="newblog" href="#">Post to Forum</a></li>
                                 <li><a id="newsnippet" href="#">Post a Code Snippet</a></li>
@@ -127,7 +145,7 @@
                     {% if user_is_admin %}
                         <!-- Administrative Console -->
                         <div class="middle_links">
-                            <h3>Astropython administrator</h3>
+                            <h3>AstroPython administrator</h3>
                             <ul>
                                 <li><a id="openshell" href="/admin/shell">Open Shell</a></li>
                                 <li><a href="/admin/cache_stats">Memcached Stats</a></li>
@@ -176,7 +194,7 @@
                     <div class="middle_links">
                         <h3>Subscribe</h3>
                         <p>
-                            Stay updated on Astropython happenings via Atom syndication.
+                            Stay updated on AstroPython happenings via Atom syndication.
                         </p>
                         <ul>
                             <li>

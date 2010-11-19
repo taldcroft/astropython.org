@@ -1,0 +1,14 @@
+./process.py
+python2.5 appcfg.py update .
+
+./ingest.py cscsdss
+
+* Dumping from localhost datastore
+bulkloader.py --dump --app_id=cscsdss --kind=SdssSource --url=http://localhost:8080/remote_api --filename=sdss_source.localhost.dump .
+bulkloader.py --dump --app_id=cscsdss --kind=CscSource --url=http://localhost:8080/remote_api --filename=csc_source.localhost.dump .
+bulkloader.py --dump --app_id=cscsdss --kind=SpectralFit --url=http://localhost:8080/remote_api --filename=spectral_fit.localhost.dump .
+
+* Restoring to appspot datastore
+bulkloader.py --restore --kind=SdssSource --url=http://cscsdss.appspot.com/remote_api --filename=sdss_source.localhost.dump .
+bulkloader.py --restore --kind=CscSource --url=http://cscsdss.appspot.com/remote_api --filename=csc_source.localhost.dump .
+bulkloader.py --restore --kind=SpectralFit --url=http://cscsdss.appspot.com/remote_api --filename=spectral_fit.localhost.dump .
