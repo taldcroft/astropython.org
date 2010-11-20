@@ -48,5 +48,8 @@ skip_files: |
  (license\.txt)|
  (test\.py)|
  (app_console\.py)|
+ (astropython\.wpr)|
+ (datastore.*)|
+ (.*NOTES.*)|
  (setup.py)
  )$

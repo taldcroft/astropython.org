@@ -52,7 +52,7 @@ th,td{padding:3px 20px 3px 0px;}
 #authorIntro a{font-weight:bold;} 
 #authorIntro{line-height:1.4em;width:400px;float:right;margin:8px 0 0 0;}
 #navbar{height:20px;}
-#filler{height:16px;}
+#filler{height:12px;}
 ul.nav{list-style:none;background:#333;}
 .nav li{border-right:1px solid #666;float:left;display:block;width:100px;}
 .nav li a{font-size:11px;outline:none;color:white ;text-decoration:none;display:block;padding:5px 0 12px 5px;width:99px;text-transform:uppercase;}
