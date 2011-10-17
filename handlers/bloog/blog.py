@@ -352,7 +352,7 @@ def render_article(handler, article):
             two_columns = article.two_columns
             if two_columns is None:
                 two_columns = article.is_big()
-            allow_comments = article.allow_comments
+            allow_comments = True   # Used to be: article.allow_comments
             if allow_comments is None:
                 age = (datetime.datetime.now() - article.published).days
                 allow_comments = (age <= config.BLOG['days_can_comment'])
