@@ -1,6 +1,9 @@
 # Update
 alias python2.5 /home/aldcroft/soft/ActivePython/2.5/bin/python
-python2.5 /home/aldcroft/soft/google_appengine/appcfg.py update .
+
+set path=(/home/aldcroft/soft/ActivePython/2.5/bin /home/aldcroft/soft/google_appengine $path)
+set prompt="gae-$prompt"
+appcfg.py update .
 
 # Download database from google app engine (live site)
 cd bulkdata

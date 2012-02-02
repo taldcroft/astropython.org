@@ -88,6 +88,12 @@ PAGE = {
         "title": "Featured resources",
         "description": "",
         "entries": [
+            { "title": "Python for Astronomers", 
+              "url": "http://python4astronomers.github.com", 
+              "description": "Practical intro" },
+            { "title": "Getting Started", 
+              "url": "http://www.astropython.org/tutorial/2009/12/Tutorial-of-Tutorials", 
+              "description": "Python in astronomy" },
             { "title": "Python", 
               "url": "http://python.org", 
               "description": "Home page" },
