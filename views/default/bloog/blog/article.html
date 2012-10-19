@@ -16,7 +16,7 @@
 {% if article %}
     <div id="article" class="post">
         <div class="postMeta">
-            {% if user_is_admin %}
+            {% if user %}
             <span class="articlebtn"><a id="editbtn" href="#">Edit</a></span>
             <span class="articlebtn"><a id="deletebtn" href="#">Delete</a></span>
             {% endif %}

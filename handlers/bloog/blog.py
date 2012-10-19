@@ -427,12 +427,12 @@ class ArticleHandler(restful.Controller):
         article = db.Query(models.blog.Article).filter('permalink =', path).get()
         process_comment_submission(self, article)
 
-    @authorized.role("admin")
+    @authorized.role("user")
     def put(self, path):
         logging.debug("ArticleHandler#put")
         process_article_edit(self, permalink = path)
 
-    @authorized.role("admin")
+    @authorized.role("user")
     def delete(self, path):
         """
         By using DELETE on /Article, /Comment, /Tag, you can delete the first 
@@ -499,13 +499,13 @@ class BlogEntryHandler(restful.Controller):
             logging.debug("No article attached to submitted comment")
             self.error(400)
 
-    @authorized.role("admin")
+    @authorized.role("user")
     def put(self, category, year, month, perm_stem):
         permalink = '/'.join((category, year, month, perm_stem))
         logging.debug("BlogEntryHandler#put")
         process_article_edit(handler = self, permalink = permalink)
 
-    @authorized.role("admin")
+    @authorized.role("user")
     def delete(self, category, year, month, perm_stem):
         permalink = '/'.join((category, year, month, perm_stem))
         logging.debug("Deleting %s entry %s" % (category, permalink))
