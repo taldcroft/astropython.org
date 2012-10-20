@@ -641,11 +641,17 @@ class MonthHandler(restful.Controller):
         process_article_submission(handler=self, article_type='blog entry')
 
 class AtomHandler(webapp.RequestHandler):
-    def get(self):
+    def get(self, category=None):
         logging.debug("Sending Atom feed")
-        articles = db.Query(models.blog.Article). \
-                 filter('article_type =', 'blog entry'). \
-                 order('-published').fetch(limit=10)
+        if category is None:
+            articles = db.Query(models.blog.Article). \
+                     filter('article_type =', 'blog entry'). \
+                     order('-published').fetch(limit=10)
+        else:
+            articles = db.Query(models.blog.Article). \
+                     filter('article_type =', 'blog entry'). \
+                     filter('category =', category). \
+                     order('-published').fetch(limit=10)
         updated = ''
         if articles:
             updated = articles[0].rfc3339_updated()
