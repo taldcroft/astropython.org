@@ -53,6 +53,13 @@ indexes:
   properties:
   - name: article_type
   - name: category
+  - name: published
+    direction: desc
+
+- kind: Article
+  properties:
+  - name: article_type
+  - name: category
   - name: resource_description
 
 - kind: Article
